@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>xList · 银河系最美List</title>
+<!-- 修正视口设置，确保完全适配设备宽度 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<style>
+:root{
+  --bg:#fafafa;
+  --text:#111;
+  --text2:#555;
+  --accent:#0052ff;
+  --radius:14px;
+  --gap:24px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --bg-svg:url("/images/nav.svg");
+}
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font:inherit;
+  max-width: 100%; /* 防止任何元素超出屏幕宽度 */
+}
+body{
+  font-family:var(--font);
+  background:var(--bg) var(--bg-svg) left top/auto repeat;
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  word-break:break-word;
+  overflow-x:hidden; /* 禁止横向滚动 */
+  position:relative;
+  width:100vw; /* 强制 body 宽度为设备宽度 */
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;height:auto;display:block;}
+.page{
+  max-width:720px;
+  margin:0 auto;
+  /* 重新计算内边距，避免 safe area 导致的溢出 */
+  padding:var(--gap);
+  padding-right: calc(var(--gap) + env(safe-area-inset-right));
+  padding-left: calc(var(--gap) + env(safe-area-inset-left));
+  padding-bottom: calc(var(--gap) + env(safe-area-inset-bottom));
+  width:100%; /* 确保容器宽度适应屏幕 */
+}
+header{margin-bottom:var(--gap);}
+h1{font-size:clamp(32px,6vw,40px);font-weight:600;letter-spacing:-.02em;}
+.subtitle{font-size:18px;color:var(--text2);}
+.badge{
+  display:inline-block;font-size:13px;font-weight:500;
+  padding:4px 10px;border-radius:20px;
+  background:color-mix(in srgb,var(--accent) 10%,transparent);
+  color:var(--accent);margin-bottom:8px;
+}
+.cards{display:grid;gap:var(--gap);}
+.card{
+  background:#fff;border:1px solid #e5e5e5;
+  border-radius:var(--radius);padding:24px;
+  transition:border-color .2s,box-shadow .2s;
+  width:100%; /* 卡片宽度强制为容器宽度 */
+}
+@media (hover:hover){
+  .card:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 8%,transparent);
+  }
+}
+.card.img-card{
+  padding:0;overflow:hidden;position:relative;
+  aspect-ratio:16/9;
+}
+.card.img-card img{
+  width:100%;height:100%;object-fit:cover;
+}
+.t1{font-size:20px;font-weight:600;margin-bottom:6px;}
+.t2{font-size:15px;color:var(--text2);}
+.links{
+  margin-top:20px;display:flex;flex-wrap:wrap;gap:12px 24px;font-size:15px;
+}
+.links a{
+  display:inline-flex;align-items:center;gap:4px;
+  min-height:48px;color:var(--accent);
+  word-break:break-all; /* 长链接自动换行 */
+}
+.links a::after{content:"→";opacity:.6;transition:transform .2s;}
+@media (hover:hover){
+  .links a:hover::after{transform:translateX(3px);}
+}
+pre{
+  background:#f5f5f5;padding:16px;border-radius:var(--radius);
+  font-size:14px;overflow-x:auto;margin-top:12px;
+}
+footer{margin-top:40px;font-size:14px;color:var(--text2);}
+@media (min-width:600px){
+  .row{display:flex;gap:var(--gap);flex-wrap:wrap;}
+  .row .card{flex:1 1 0;}
+}
+@media (max-width:599px){
+  .row{display:grid;gap:var(--gap);}
+}
+.xList-blue {
+  position: relative;
+  color: #000;
+}
+.xList-blue::after {
+  content: "st";
+  position: absolute;
+  color: var(--accent);
+  margin-left: -0.819em;
+}
+@media (max-width:600px){
+  :root{--gap:16px;}
+  /* 移动端强制所有元素不超出屏幕 */
+  * {
+    max-width: calc(100vw - (var(--gap) * 2)) !important;
+  }
+  .page {
+    padding: var(--gap);
+    padding-right: calc(var(--gap) + env(safe-area-inset-right));
+    padding-left: calc(var(--gap) + env(safe-area-inset-left));
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- 页面内容保持不变 -->
+  <header>
+    <h1 class="xList-blue">xList</h1>
+    <p class="subtitle">the most beautiful list of the Milky Way</p>
+  </header>
+
+  <section class="cards">
+    <div class="row">
+      <div class="card">
+        <span class="badge">About</span>
+        <div class="t1">xLi.st</div>
+        <div class="t2">Minimalist personal list design.</div>
+      </div>
+      <a href="https://mrmi.top" target="_blank" rel="noopener noreferrer" class="card img-card">
+        <img src="/images/mrmi.webp" alt="Evan's Mi">
+      </a>
+    </div>
+
+    <div class="card">
+      <span class="badge">My Website</span>
+      <div class="t1">Build for fun!</div>
+      <div class="t2" style="margin-top:8px;">As you can see, this is an interesting personal practice.</div>
+      <div class="links">
+        <a href="https://evan.xin" target="_blank">Space</a>
+        <a href="https://m.oi.to" target="_blank">Moments</a>
+        <a href="https://evanmi.top" target="_blank">Domain</a>
+        <a href="https://nav.oi.to" target="_blank">Nav</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Domain</span>
+      <div class="t1">Domain Show</div>
+      <div class="t2">Show some interesting domain names.</div>
+      <pre><code>85.to  ➤ oi.to  ➤ say.li  ➤ zun.im  ➤ run.bz  ➤ mac.re  ➤ rar.cx  <a href="https://mrmi.top" target="_blank" rel="noopener noreferrer">🎁</a></code></pre>
+    </div>
+    <div class="row">
+      <div class="card">
+        <span class="badge">Space</span>
+        <div class="t1">
+          <a href="https://www.evan.xin/blog/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">My blog article list.</a>
+        </div>
+      </div>
+      <div class="card">
+        <span class="badge">Space</span>
+        <div class="t1">
+          <a href="https://www.evan.xin/friend/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">My moments post list.</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://m.oi.to" target="_blank" rel="noopener noreferrer" class="card" style="display:flex;align-items:center;gap:12px;">
+      <img src="/images/baa.jpg" alt="avatar" style="width:50px;height:50px;border-radius:50%;object-fit:cover;">
+      <span>Onstage in life, backstage on the net.</span>
+    </a>
+
+    <div class="card">
+      <div class="t1">Baseball Sport</div>
+      <div class="links">
+        <a href="https://www.xiaohongshu.com/user/profile/64e57f2a000000000100c2bc" target="_blank">xiaohongshu.com・@BangQiuJun</a>
+        <a>WeChat Video Account: @棒球菌</a>
+        <span style="margin-left:auto;"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="t1">Some Links</div>
+      <div class="t2">Let's put some links here</div>
+      <div class="links">
+        <a href="https://oi.to" target="_blank">Oi.to</a>
+        <a href="https://shebao.cx" target="_blank">SheBao.cx</a>
+        <a href="https://edc.plus" target="_blank">EDC.Plus</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align:center;">
+    © 2025 <a href="https://xli.st" target="_blank">xLi.st ♥️</a></footer>
+</div>
+
+<!-- JavaScript 部分保持不变 -->
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+document.onkeydown = function(e) {
+  if (e.keyCode === 123) {
+    e.preventDefault();
+  }
+  if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+    e.preventDefault();
+  }
+  if (e.ctrlKey && e.keyCode === 85) {
+    e.preventDefault();
+  }
+};
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+});
+document.addEventListener('paste', function(e) {
+  e.preventDefault();
+});
+document.addEventListener('cut', function(e) {
+  e.preventDefault();
+});
+document.addEventListener('dragstart', function(e) {
+  e.preventDefault();
+});
+document.addEventListener('mousedown', function(e) {
+  if (e.button === 1) {
+    e.preventDefault();
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && (e.keyCode === 80 || e.keyCode === 83)) {
+    e.preventDefault();
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.keyCode >= 112 && e.keyCode <= 123 && e.keyCode !== 116) {
+    e.preventDefault();
+  }
+});
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+});
+</script>
+</body>
+</html>
